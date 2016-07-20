@@ -1,5 +1,14 @@
 # 2016-07-20
 
+import numpy as np
+import math
+
+
+def dist_fun(vec1, vec2):
+    # Calculate the distance of two vector -- vector1 & vector2
+    dist = math.sqrt((vec1[0]-vec2[0])**2 + (vec1[1]-vec2[1])**2)
+    return dist
+
 import re
 def dis_calc(filename,fres):
     im = scm.imread(filename)
