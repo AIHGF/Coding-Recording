@@ -27,4 +27,4 @@ if __name__ == '__main__':
         fileName = fileName+'.jpg'
         print 'Processing the image: ', fileName
         
-        shutil.move(fileName,"./test/")    
+        shutil.move(fileName,"./test/")    #移动fileName图片到test文件夹
