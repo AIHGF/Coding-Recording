@@ -51,9 +51,9 @@ def main():
   figure()
   gray()
   subplot(2,4,1)
-  imshow(img_mean.shape(m,n))
+  imshow(img_mean.reshape(m,n))
   for i in range(7):
     subplot(2, 4, i+2)
-    imshow(V[i].shape(m,n))
+    imshow(V[i].reshape(m,n))
     
   show()
