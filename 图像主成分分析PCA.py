@@ -34,7 +34,7 @@ def pca(X):
     V = V[:num_data] # 仅仅返回前 num_data 维数据才合理
   
   # 返回投影矩阵、方差和均值
-  returen V, S, mean_X
+  return V, S, mean_X
 
 def main():
   im = array(Image.open(img_list[0])) # 打开一幅图像，获取其大小
