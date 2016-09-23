@@ -15,18 +15,39 @@ python setup.py install
 
 import urllib
 from pyheatmap.heatmap import HeatMap
+import random
+
+def make_test_data():
+
+    width = 400
+    height = 300
+
+    # 随机生成测试数据
+    data = []
+    r = 50
+    for i in range(4):
+        data.append([
+            random.randint(0, width - 1),
+            random.randint(0, height - 1),
+            ])
+    for i in xrange(12):
+        data2 = []
+        for x, y in data:
+            x2 = x + random.randint(-r, r)
+            y2 = y + random.randint(-r, r)
+            data2.append([x2, y2])
+        data.extend(data2)
+    print(len(data))
+    return data
+
+    # f = open("test_data.txt", "w")
+    # for x, y in data:
+    #     f.write("%d,%d\n" % (x, y))
+    # f.close()
 
 def main():
-    # 下载测试数据
-    url = "https://raw.github.com/oldj/pyheatmap/master/examples/test_data.txt"
-    sdata = urllib.urlopen(url).read().split("\n")
-    data = []
-    for ln in sdata:
-        a = ln.split(",")
-        if len(a) != 2:
-            continue
-        a = [int(i) for i in a]
-        data.append(a)
+
+    data = make_test_data()
 
     # 开始绘制
     hm = HeatMap(data)
