@@ -13,7 +13,6 @@ python setup.py install
 '''
 #From: https://github.com/oldj/pyheatmap
 
-import urllib
 from pyheatmap.heatmap import HeatMap
 import random
 
