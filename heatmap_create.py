@@ -1,4 +1,5 @@
 #!/usr/bin/env python 
+# -*- coding: utf-8 -*-
 '''
 Installiation：
 1.pip 安装：
@@ -10,18 +11,27 @@ git clone git://github.com/oldj/pyheatmap.git
 cd pyheatmap
 python setup.py install
 '''
+#From: https://github.com/oldj/pyheatmap
 
-#from pyheatmap.heatmap import HeatMap
-import heatmap
-import random
+import urllib
+from pyheatmap.heatmap import HeatMap
 
-if __name__ == "__main__":    
-    pts = []
-    for x in range(400):
-        pts.append((random.random(), random.random() ))
+def main():
+    # 下载测试数据
+    url = "https://raw.github.com/oldj/pyheatmap/master/examples/test_data.txt"
+    sdata = urllib.urlopen(url).read().split("\n")
+    data = []
+    for ln in sdata:
+        a = ln.split(",")
+        if len(a) != 2:
+            continue
+        a = [int(i) for i in a]
+        data.append(a)
 
-    print "Processing %d points..." % len(pts)
+    # 开始绘制
+    hm = HeatMap(data)
+    hm.clickmap(save_as="hit.png")
+    hm.heatmap(save_as="heat.png")
 
-    hm = heatmap.Heatmap()
-    img = hm.heatmap(pts)
-    img.save("classic.png")
+if __name__ == "__main__":
+    main()
